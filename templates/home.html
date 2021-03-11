@@ -15,9 +15,11 @@
         <p class="subtitle">
             Please enter some text in both the boxes below and find out the result!
         </p>
-        {% if score >= 0 %}
-            <p>Similarity: {{ score }}/1.0</p>
-        {% endif %}
+
+        <p><b>SCORES</b></p>
+        {% for score in scores %}
+            <p>{{ score.0 }}: {{ score.1 }}</p>
+        {% endfor %}
     </div>
 </section>
 

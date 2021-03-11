@@ -1,18 +1,26 @@
 from django.shortcuts import render
-from django.views.generic import FormView
+from django.views.generic import View
 
 from similarity.forms import TextForm
 
 
-class TextView(FormView):
+class TextView(View):
     template_name = 'home.html'
-    form_class = TextForm
 
-    def form_valid(self, form):
-        score = form.evaluate()
-        context = self.get_context_data()
-        context['score'] = score
+    def get(self, request, *args, **kwargs):
+        context = {'form': TextForm()}
+        return render(request=request,
+                      template_name=self.template_name,
+                      context=context)
 
-        return render(request=self.request,
-                      template_name='home.html',
+    def post(self, request, *args, **kwargs):
+        form = TextForm(request.POST)
+        context = {'form': form}
+
+        if form.is_valid():
+            scores = form.evaluate()
+            context['scores'] = scores
+
+        return render(request=request,
+                      template_name=self.template_name,
                       context=context)
