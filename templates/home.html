@@ -13,22 +13,38 @@
             Text similarity detector
         </h1>
         <p class="subtitle">
-            Please enter some text in both the boxes below and find out the result!
+            Please enter some text in both the boxes below, select the algorithms to run, and click on calculate to view
+            the results!
         </p>
 
-        <p><b>SCORES</b></p>
-        {% for score in scores %}
-            <p>{{ score.0 }}: {{ score.1 }}</p>
-        {% endfor %}
     </div>
 </section>
 
-<section>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Calculate">
-    </form>
+{% if scores %}
+    <section class="section">
+        <div class="container">
+            <p class="subtitle">
+                <b>Scores</b> (out of 1.0)
+            </p>
+            {% for score in scores %}
+                <p>
+                    <b>{{ score.0 }}</b>: {{ score.1 }}
+                </p>
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}
+
+{% load bulma_tags %}
+<section class="section">
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form | bulma }}
+            <input class="button is-primary" type="submit" value="Calculate">
+        </form>
+    </div>
 </section>
+
 </body>
 </html>

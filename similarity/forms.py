@@ -4,12 +4,13 @@ from .utils import SimilarityCalculator
 
 
 class TextForm(forms.Form):
-    algo_choices = {'jaccard': 'Jaccard Similarity (Jaccard index)',
+    algo_choices = {'jaccard': 'Jaccard Index',
                     'cosine': 'Cosine Similarity', }
 
     t1 = forms.CharField(label='Text 1', widget=forms.Textarea)
     t2 = forms.CharField(label='Text 2', widget=forms.Textarea)
-    algo = forms.MultipleChoiceField(label='Algorithm', choices=algo_choices.items())
+    algo = forms.MultipleChoiceField(help_text='Press shift while clicking to select multiple options',
+                                     label='Algorithm', choices=algo_choices.items())
 
     def evaluate(self):
         first = self.cleaned_data['t1']
