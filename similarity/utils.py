@@ -39,48 +39,48 @@ class SimilarityCalculator:
 
         return clean(self.text1), clean(self.text2)
 
-    @staticmethod
-    def dot(x, y):
-        res = 0
-        for x_elem, y_elem in zip(x, y):
-            res += x_elem * y_elem
+    def execute(self, method):
+        try:
+            score = getattr(self, method)()
+        except ZeroDivisionError:
+            score = 0
 
-        return res
-
-    def manhattan(self):
-        pass
-
-    def euclidean(self):
-        pass
+        return round(score, 4)
 
     def jaccard(self):
-        t1_unique = set(self.t1)
-        t2_unique = set(self.t2)
-        t1_intersect_t2 = len(t1_unique & t2_unique)
-        t1_union_t2 = len(t1_unique | t2_unique)
+        intersect, total = 0, 0
 
-        try:
-            score = t1_intersect_t2 / t1_union_t2
-        except ZeroDivisionError:
-            score = 0
+        for e1, e2 in zip(self.v1, self.v2):
+            intersect += min(e1, e2)
+            total += e1 + e2
 
-        return round(score, 4)
+        return intersect / (total - intersect)
 
     def cosine(self):
-        v1, v2 = self.to_vector()
+        def dot(x, y):
+            res = 0
+            for x_elem, y_elem in zip(x, y):
+                res += x_elem * y_elem
 
-        try:
-            score = self.dot(v1, v2) / (self.dot(v1, v1) * self.dot(v2, v2)) ** 0.5
-        except ZeroDivisionError:
-            score = 0
+            return res
 
-        return round(score, 4)
+        return dot(self.v1, self.v2) / (dot(self.v1, self.v1) * dot(self.v2, self.v2)) ** 0.5
 
     def dice(self):
-        pass
+        intersect, total = 0, 0
 
-    def matching(self):
-        pass
+        for e1, e2 in zip(self.v1, self.v2):
+            intersect += min(e1, e2)
+            total += e1 + e2
+
+        return 2 * intersect / total
 
     def overlap(self):
-        pass
+        intersect, v1_sum, v2_sum = 0, 0, 0
+
+        for e1, e2 in zip(self.v1, self.v2):
+            intersect += min(e1, e2)
+            v1_sum += e1
+            v2_sum += e2
+
+        return intersect / min(v1_sum, v2_sum)

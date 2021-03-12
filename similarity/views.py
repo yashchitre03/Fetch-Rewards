@@ -9,6 +9,7 @@ class TextView(View):
 
     def get(self, request, *args, **kwargs):
         context = {'form': TextForm()}
+
         return render(request=request,
                       template_name=self.template_name,
                       context=context)
