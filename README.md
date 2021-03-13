@@ -29,16 +29,13 @@ This text is internally represented as a vector of numbers for ease in mathemati
 ## Instructions To Run
 
 1. Setup [docker engine/desktop](https://docs.docker.com/engine/) on your local system.
-2. Run the following docker commands:
-    1. `docker pull yashchitre03/text-similarity`
-    2. `docker run -d -p 8000:8000 yashchitre03/text-similarity`
-3. Open your local browser and visit port 8000 on your localhost (or whichever port you chose when running the command).
-4. To stop, execute the command:
-    1. `docker container stop [container-id]`
+2. To run, execute the command: `docker run -d -p 8080:8080 yashchitre03/text-similarity`
+3. Open your local browser and visit  `127.0.0.1:8080`, which most likely will be the localhost.
+4. To stop, execute the command: `docker container stop [container-id]`
 
-The command 2.i pulls the docker image from DockerHub, while the command 2.ii creates a container based on that image,
-binds the port from host system to container, and runs the container in a detached mode. The host port can be anything, but the container
-port should be 8000 (as this port is exposed in the Dockerfile).
+The command 2 pulls the docker image from DockerHub, creates a container based on that image,
+binds the port from host system to container, and runs the container in a detached mode. The host port can be anything,
+but the container port should be 8080 (as this port is exposed in the Dockerfile).
 
 ## Project Structure
 
