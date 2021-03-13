@@ -3,10 +3,11 @@
 > A Django web application to find similarity between different text samples.
 > This application is containerized and uploaded to DockerHub.
 
-## Table of contents
+## Table Of Contents
 
 * [General Info](#general-info)
 * [Instructions To Run](#instructions-to-run)
+* [Project Structure](#project-structure)
 * [Application Screenshots](#application-screenshots)
 * [Technologies](#technologies)
 * [Algorithms](#algorithms)
@@ -20,10 +21,10 @@ their choice from the menu and find out how different techniques score the text.
 Before applying the algorithms, some pre-processing is performed on the data samples. The text is converted to lower
 case as case should not affect the meaning of the text. Then all punctuations are removed from the text. Suppose a text
 is 'hey ! ! !', then after tokenization (converting sentence to list of words), the three exclamation marks would be
-considered as three separate tokens. But, they do not add any meaning to the text. Finally, any non-alphabetical data (
-like numbers) are removed from the text.
+considered as three separate tokens. But, they do not add any meaning to the text. Finally, any non-alphabetical data
+(like numbers) is removed from the text.
 
-This text is internally represented as a vector of numbers for mathematical calculations in various algorithms.
+This text is internally represented as a vector of numbers for ease in mathematical calculations in various algorithms.
 
 ## Instructions To Run
 
@@ -32,39 +33,55 @@ This text is internally represented as a vector of numbers for mathematical calc
     1. `docker pull yashchitre03/text-similarity`
     2. `docker run -d -p 8000:8000 yashchitre03/text-similarity`
 3. Open your local browser and visit port 8000 on your localhost (or whichever port you chose when running the command).
-4. To stop, run the command:
+4. To stop, execute the command:
     1. `docker container stop [container-id]`
 
 The command 2.i pulls the docker image from DockerHub, while the command 2.ii creates a container based on that image,
-binds the port from host system to container, and runs the container. The host port can be anything, but the container
+binds the port from host system to container, and runs the container in a detached mode. The host port can be anything, but the container
 port should be 8000 (as this port is exposed in the Dockerfile).
+
+## Project Structure
+
+The project consists of the following files and directories:
+
+1. Directories
+    * Fetch_Rewards - Contains the config and settings files for the Django web application.
+    * similarity - An app that defines views, forms, and algorithms for the text similarity task.
+    * templates - Contains HTML files.
+    * README_images - Image data for the README.md file.
+2. Files
+    * README.md - Project documentation.
+    * .gitignore - Build and IDE files to ignore in git repository.
+    * requirements.txt - Python packages required for the project.
+    * manage.py - Django task for running project related commands.
+    * Dockerfile - Script for project containerization.
 
 ## Application Screenshots
 
 * Main page (top)
-![Main page (top)](README_images/main-1.png)
-  
+  ![Main page (top)](README_images/main-1.png)
+
 * Main page (bottom)
-![Main page (bottom)](README_images/main-2.png)
-  
+  ![Main page (bottom)](README_images/main-2.png)
+
 * Result page
-![Result page](README_images/res.png)
+  ![Result page](README_images/res.png)
 
 ## Technologies
 
 * Programming language
-   * [Python 3 programming language](https://www.python.org/)
+    * [Python 3 programming language](https://www.python.org/)
 
 * Frameworks
-   * [Django 3 web framework](https://www.djangoproject.com/)
-   * [Bulma CSS framework](https://bulma.io/)
+    * [Django 3 web framework](https://www.djangoproject.com/)
+    * [Bulma CSS framework](https://bulma.io/)
 
 * Tools
-   * [Docker Engine](https://docs.docker.com/engine/)
-   * [git scm](https://git-scm.com/)
+    * [Docker Engine](https://docs.docker.com/engine/)
+    * [git scm](https://git-scm.com/)
 
 * IDE
-   * [Jetbrains Pycharm](https://www.jetbrains.com/pycharm/)
+    * [Jetbrains Pycharm](https://www.jetbrains.com/pycharm/)
 
 ## Algorithms
 
