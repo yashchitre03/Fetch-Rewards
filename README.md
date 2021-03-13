@@ -30,7 +30,7 @@ This text is internally represented as a vector of numbers for ease in mathemati
 
 1. Setup [docker engine/desktop](https://docs.docker.com/engine/) on your local system.
 2. To run, execute the command: `docker run -d -p 8000:8000 yashchitre03/text-similarity`
-3. Open your local browser and visit  `127.0.0.1:8000`, which most likely will be the localhost.
+3. Open your local browser and visit  `0.0.0.0:8000` to interact with the front-end.
 4. To stop, execute the command: `docker container stop [container-id]`
 
 The command 2 pulls the docker image from DockerHub, creates a container based on that image,
@@ -56,13 +56,13 @@ The project consists of the following files and directories:
 ## Application Screenshots
 
 * Main page (top)
-  ![Main page (top)](README_images/main-1.png)
+  ![Main page (top)](https://github.com/yashchitre03/Fetch-Rewards/blob/main/README_images/main-1.png)
 
 * Main page (bottom)
-  ![Main page (bottom)](README_images/main-2.png)
+  ![Main page (bottom)](https://github.com/yashchitre03/Fetch-Rewards/blob/main/README_images/main-2.png)
 
 * Result page
-  ![Result page](README_images/res.png)
+  ![Result page](https://github.com/yashchitre03/Fetch-Rewards/blob/main/README_images/res.png)
 
 ## Technologies
 
