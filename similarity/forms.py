@@ -19,8 +19,8 @@ class TextForm(forms.Form):
         second = self.cleaned_data['t2']
         choices = self.cleaned_data['algo']
 
-        calc = SimilarityCalculator(first, second)
         scores = []
+        calc = SimilarityCalculator(first, second)
         for choice in choices:
             score = calc.execute(choice)
             scores.append((self.algo_choices.get(choice), score))

@@ -41,13 +41,13 @@ class SimilarityCalculator:
 
     def execute(self, method):
         try:
-            score = getattr(self, method)()
+            score = getattr(self, f'_{method}')()
         except ZeroDivisionError:
             score = 0
 
         return round(score, 4)
 
-    def jaccard(self):
+    def _jaccard(self):
         intersect, total = 0, 0
 
         for e1, e2 in zip(self.v1, self.v2):
@@ -56,7 +56,7 @@ class SimilarityCalculator:
 
         return intersect / (total - intersect)
 
-    def cosine(self):
+    def _cosine(self):
         def dot(x, y):
             res = 0
             for x_elem, y_elem in zip(x, y):
@@ -66,7 +66,7 @@ class SimilarityCalculator:
 
         return dot(self.v1, self.v2) / (dot(self.v1, self.v1) * dot(self.v2, self.v2)) ** 0.5
 
-    def dice(self):
+    def _dice(self):
         intersect, total = 0, 0
 
         for e1, e2 in zip(self.v1, self.v2):
@@ -75,7 +75,7 @@ class SimilarityCalculator:
 
         return 2 * intersect / total
 
-    def overlap(self):
+    def _overlap(self):
         intersect, v1_sum, v2_sum = 0, 0, 0
 
         for e1, e2 in zip(self.v1, self.v2):
