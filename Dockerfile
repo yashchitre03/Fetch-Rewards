@@ -6,7 +6,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . app
 WORKDIR /app
 
-EXPOSE 8080
+EXPOSE 8000
 
 ENTRYPOINT ["python", "manage.py"]
 CMD ["runserver"]
