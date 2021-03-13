@@ -27,13 +27,24 @@
     <section class="section">
         <div class="container">
             <p class="subtitle">
-                <b>Scores</b> (out of 1.0)
+                <b>Results</b>
             </p>
-            {% for score in scores %}
-                <p>
-                    <b>{{ score.0 }}</b>: {{ score.1 }}
-                </p>
-            {% endfor %}
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Similarity Score (out of 1)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for score in scores %}
+                    <tr>
+                        <th>{{ score.0 }}</th>
+                        <td>{{ score.1 }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </section>
 {% endif %}
