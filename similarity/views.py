@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View
 
-from similarity.forms import TextForm
+from .forms import TextForm
 
 
 class TextView(View):
