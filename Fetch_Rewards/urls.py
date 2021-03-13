@@ -18,5 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # urls bound to the similarity app
     path('', include('similarity.urls')),
 ]

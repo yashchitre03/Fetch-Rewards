@@ -4,9 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Text similarity detector</title>
+    <!-- Bulma CSS framework for form and other styling -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 <body>
+
+<!-- Header to display the title and subtitle -->
 <section class="hero is-link">
     <div class="hero-body">
         <p class="title">
@@ -19,6 +22,7 @@
     </div>
 </section>
 
+<!-- Display the scores of each algorithm if available (using Django Template Language) -->
 {% if scores %}
     <section class="section">
         <div class="container">
@@ -34,6 +38,7 @@
     </section>
 {% endif %}
 
+<!-- Django form to get the text samples -->
 {% load bulma_tags %}
 <section class="section">
     <div class="container">
